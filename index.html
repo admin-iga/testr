@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка с шансом 50%</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 2em;
+            padding: 20px;
+        }
+
+        .error {
+            color: red;
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        .success {
+            color: green;
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message" id="message">Нажми на кнопку для проверки</div>
+    <button onclick="runCheck()">Проверить</button>
+
+    <script>
+        function runCheck() {
+            const message = document.getElementById('message');
+            const success = Math.random() >= 0.5;
+
+            if (success) {
+                message.innerHTML = '✅ Добрый смайлик!';
+                message.className = 'message success';
+            } else {
+                message.innerHTML = '❌ Ошибка!';
+                message.className = 'message error';
+            }
+        }
+    </script>
+
+</body>
+</html>
